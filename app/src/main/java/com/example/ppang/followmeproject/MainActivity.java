@@ -11,12 +11,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONObject;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
+    private final RequestQueue queue = VolleyNetwork.getInstance(this).getRequestQueue();;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -166,7 +175,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick_sample(View view){
-        Toast.makeText(getApplicationContext(),"abc",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"click",Toast.LENGTH_SHORT).show();
+
+        JSONObject obj = new JSONObject();
+        /*
+        obj에 보낼 아이템 추가
+         */
+        JsonObjectRequest myReq = new JsonObjectRequest(Request.Method.POST,
+                "url 추가",
+                obj,
+                networkSuccessListner(),
+                networkErrorListner());
+        queue.add(myReq);
+    }
+
+    private Response.Listener<JSONObject> networkSuccessListner(){
+        return new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.v(TAG,response.toString());
+            }
+        };
+    }
+
+    private Response.ErrorListener networkErrorListner(){
+        return new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG,"Network Error");
+            }
+        };
     }
 
 }
