@@ -25,7 +25,7 @@ import org.json.JSONObject;
  */
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    private final RequestQueue queue = VolleyNetwork.getInstance(this).getRequestQueue();;
+    private RequestQueue queue;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        queue = VolleyNetwork.getInstance(this).getRequestQueue();
 
         mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
