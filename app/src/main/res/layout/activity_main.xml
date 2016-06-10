@@ -1,0 +1,145 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0099cc"
+    tools:context="com.example.ppang.followmeproject.MainActivity">
+
+    <TextView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:keepScreenOn="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/center_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:text="@string/center_text"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ip_edit"
+                android:hint="IP를 입력하세용"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="5dp" />
+
+            <Button
+                android:id="@+id/connect_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CONNECT" />
+        </LinearLayout>
+
+        <com.example.biiin.em_client.MjpegView
+            android:id="@+id/video"
+
+            android:layout_width="match_parent"
+            android:layout_height="1000px"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/up_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/center_txt"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/up"
+                android:gravity="center"
+                android:onClick="onClick_sample" />
+
+            <Button
+                android:id="@+id/down_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/center_txt"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/down"
+                android:gravity="center"
+                android:onClick="onClick_sample" />
+
+            <Button
+                android:id="@+id/stop_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/center_txt"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/stop"
+                android:gravity="center"
+                android:onClick="onClick_sample" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/dummy_button"
+                style="?metaButtonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/connection_button" />
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>
+
+
+    <!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:background="#0099cc"--><!--tools:context="com.example.ppang.followmeproject.MainActivity">-->
+
+    <!--&lt;!&ndash; The primary full-screen view. This can be replaced with whatever view--><!--is needed to present your content, e.g. VideoView, SurfaceView,--><!--TextureView, etc. &ndash;&gt;--><!--<TextView--><!--android:id="@+id/fullscreen_content"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:gravity="center"--><!--android:keepScreenOn="true"/>-->
+
+    <!--<RelativeLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent">-->
+
+    <!--<TextView--><!--android:id="@+id/center_txt"--><!--android:layout_margin="5dp"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:text="@string/center_text"--><!--android:layout_centerInParent="true"--><!--android:textStyle="bold"/>-->
+
+    <!--<Button--><!--android:id="@+id/up_btn"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center"--><!--android:gravity="center"--><!--android:onClick="onClick_sample"--><!--android:layout_centerInParent="true"--><!--android:layout_above="@id/center_txt"--><!--android:background="@drawable/up"/>-->
+
+    <!--<Button--><!--android:id="@+id/down_btn"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center"--><!--android:gravity="center"--><!--android:onClick="onClick_sample"--><!--android:layout_centerInParent="true"--><!--android:layout_below="@id/center_txt"--><!--android:background="@drawable/down"/>--><!--</RelativeLayout>-->
+
+    <!--&lt;!&ndash; This FrameLayout insets its children based on system windows using--><!--android:fitsSystemWindows. &ndash;&gt;--><!--<FrameLayout--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:fitsSystemWindows="true">-->
+
+    <!--<LinearLayout--><!--android:id="@+id/fullscreen_content_controls"--><!--style="?metaButtonBarStyle"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="bottom|center_horizontal"--><!--android:background="@color/black_overlay"--><!--android:orientation="horizontal"--><!--tools:ignore="UselessParent">-->
+
+    <!--<Button--><!--android:id="@+id/dummy_button"--><!--style="?metaButtonBarButtonStyle"--><!--android:layout_width="0dp"--><!--android:layout_height="wrap_content"--><!--android:layout_weight="1"--><!--android:text="@string/connection_button" />-->
+
+    <!--</LinearLayout>--><!--</FrameLayout>-->
+
+    <!--</FrameLayout>-->
